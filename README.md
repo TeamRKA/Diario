@@ -5,8 +5,8 @@
 Time spent: **X** hours spent in total
 
 ## Description
-When you're a busy person, you tend to forget all of the dates and times that you see all around you. It's crucial to keep track of each of the events that you're associated with. That's what Eventify is for.
-Eventify is an app that shows all of the events that you have currently saved and allows you to take pictures of flyers, posters, assignments, prescription bottles, etc. to save more events. It can also work with Facebook Events, so you can have all of your reminders in one place.
+When you're a busy person, you tend to forget all of the dates and times that you see all around you. It's crucial to keep track of each of the events that you're associated with. That's what Diario is for.
+Diario is an app that shows all of the events that you have currently saved and allows you to take pictures of fliers, posters, assignments, prescription bottles, etc. to save more events. It can also work with Facebook Events, so you can have all of your reminders in one place.
 The challenge that we will face when developing this app is using OCR to successfully detect dates.
 
 ## User Stories
@@ -28,7 +28,7 @@ The following **optional** features are implemented:
 ![alt text]-->
 
 ## API
-For this app, we will be using clarifai's API (specifically its OCR endpoint) and FireBase for storing our own data.
+For this app, we will be using Google Cloud Vision's API (specifically its OCR endpoint) and FireBase for storing our own data.
 For our FireBase API, we will need tables for users and events associated to the users (columns including date, time, title, note/description, and links).
 
 ## Video Walkthrough 
