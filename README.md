@@ -14,8 +14,8 @@ The challenge that we will face when developing this app is using OCR to success
 The following **required** functionality is completed:
 
 - [ ] Application UI using AutoLayout
-- [ ] Implement OCR to recognize dates
-- [ ] Implement notifications
+- [X] Implement OCR to recognize dates
+- [X] Implement notifications
 
 The following **optional** features are implemented:
 
@@ -34,7 +34,7 @@ For our FireBase API, we will need tables for users and events associated to the
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
-
+![alt text](https://github.com/TeamRKA/Diario/blob/master/diarioDemo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
