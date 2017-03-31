@@ -34,6 +34,7 @@ For our FireBase API, we will need tables for users and events associated to the
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
+
 ![alt text](https://github.com/TeamRKA/Diario/blob/master/diarioDemo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
