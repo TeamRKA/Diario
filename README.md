@@ -2,7 +2,7 @@
 
 **Diario** is an app that uses OCR to recognize dates and reminds the user using the inputted data.
 
-Time spent: **X** hours spent in total
+Time spent: **36** hours spent in total
 
 ## Description
 When you're a busy person, you tend to forget all of the dates and times that you see all around you. It's crucial to keep track of each of the events that you're associated with. That's what Diario is for.
@@ -13,7 +13,7 @@ The challenge that we will face when developing this app is using OCR to success
 
 The following **required** functionality is completed:
 
-- [ ] Application UI using AutoLayout
+- [X] Application UI using AutoLayout
 - [X] Implement OCR to recognize dates
 - [X] Implement notifications
 
