@@ -2,7 +2,7 @@
 
 **Diario** is an app that uses OCR to recognize dates and reminds the user using the inputted data.
 
-Time spent: **X** hours spent in total
+Time spent: **36** hours spent in total
 
 ## Description
 When you're a busy person, you tend to forget all of the dates and times that you see all around you. It's crucial to keep track of each of the events that you're associated with. That's what Diario is for.
@@ -13,9 +13,9 @@ The challenge that we will face when developing this app is using OCR to success
 
 The following **required** functionality is completed:
 
-- [ ] Application UI using AutoLayout
-- [ ] Implement OCR to recognize dates
-- [ ] Implement notifications
+- [X] Application UI using AutoLayout
+- [X] Implement OCR to recognize dates
+- [X] Implement notifications
 
 The following **optional** features are implemented:
 
@@ -35,6 +35,7 @@ For our FireBase API, we will need tables for users and events associated to the
 
 Here's a walkthrough of implemented user stories:
 
+![alt text](https://github.com/TeamRKA/Diario/blob/master/diarioDemo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
