@@ -22,6 +22,7 @@ The following **optional** features are implemented:
 - [ ] Support Facebook Events 
 - [ ] Allow user to write notes
 - [ ] Personal user accounts
+- [ ] Add MapView for events nearby
 
 <!--## Wireframe
 
