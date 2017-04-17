@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>415205636394-26mfoom5hfm2mljefmq7drt5hcngjtc5.apps.googleusercontent.com</string>
+	<string>724064963206-orogfaqb84ng0ttv95hb83p3t6f40id2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.415205636394-26mfoom5hfm2mljefmq7drt5hcngjtc5</string>
+	<string>com.googleusercontent.apps.724064963206-orogfaqb84ng0ttv95hb83p3t6f40id2</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDyJ1r3OYquSzr8UHHVdioFqqRL9Ih5XhM</string>
+	<string>AIzaSyCqFwASmdHYbPWwRMXdRrOmE0wYn8TUiO4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>415205636394</string>
+	<string>724064963206</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Deeptanshu.MHacks9</string>
+	<string>com.kenan.Diario</string>
 	<key>PROJECT_ID</key>
-	<string>mhacks9-fead9</string>
+	<string>diario-9a0de</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mhacks9-fead9.appspot.com</string>
+	<string>diario-9a0de.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:415205636394:ios:99c7e3366d139ceb</string>
+	<string>1:724064963206:ios:4186e8711b232695</string>
 	<key>DATABASE_URL</key>
-	<string>https://mhacks9-fead9.firebaseio.com</string>
+	<string>https://diario-9a0de.firebaseio.com</string>
 </dict>
 </plist>
