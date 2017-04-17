@@ -21,9 +21,11 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb814003422089020</string>
+				<string>fb118827418616675</string>
 			</array>
 		</dict>
 		<dict>
@@ -38,9 +40,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>814003422089020</string>
+	<string>118827418616675</string>
 	<key>FacebookDisplayName</key>
-	<string>MHacks9</string>
+	<string>diario</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

@@ -19,6 +19,7 @@ class Facebook: NSObject {
     
     //You typically should check if AccessToken.current already contains the permissions you need before asking to reduce unnecessary app switching
     //print("User must sign in")
+    //logOut()
     let loginManager = LoginManager()
     
     loginManager.logIn([ .publicProfile, .userFriends, .email]) {
