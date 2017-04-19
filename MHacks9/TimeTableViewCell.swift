@@ -9,6 +9,8 @@
 import UIKit
 
 class TimeTableViewCell: UITableViewCell {
+    @IBOutlet weak var hourTextField: UITextField!
+    @IBOutlet weak var minuteTextField: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()

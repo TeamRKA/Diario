@@ -20,6 +20,8 @@
 		46C9CF491EA6DBC7001D3B44 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF481EA6DBC7001D3B44 /* TimeTableViewCell.swift */; };
 		46C9CF4B1EA6DBD9001D3B44 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF4A1EA6DBD9001D3B44 /* SearchTableViewCell.swift */; };
 		46C9CF4D1EA6DBEA001D3B44 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF4C1EA6DBEA001D3B44 /* LocationsTableViewCell.swift */; };
+		46C9CF4F1EA70D09001D3B44 /* PersonalEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF4E1EA70D09001D3B44 /* PersonalEventsViewController.swift */; };
+		46C9CF511EA70D5B001D3B44 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF501EA70D5B001D3B44 /* CreateEventViewController.swift */; };
 		6E482F061E86ED59000A6836 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E482F051E86ED59000A6836 /* RemindersViewController.swift */; };
 		6EE9647A1E86EFAF00B41E5E /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE964791E86EFAF00B41E5E /* RemindersTableViewCell.swift */; };
 		6EE9647C1E86EFE700B41E5E /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9647B1E86EFE700B41E5E /* CaptureViewController.swift */; };
@@ -49,6 +51,8 @@
 		46C9CF481EA6DBC7001D3B44 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		46C9CF4A1EA6DBD9001D3B44 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		46C9CF4C1EA6DBEA001D3B44 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsTableViewCell.swift; path = Assets.xcassets/LocationsTableViewCell.swift; sourceTree = "<group>"; };
+		46C9CF4E1EA70D09001D3B44 /* PersonalEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalEventsViewController.swift; sourceTree = "<group>"; };
+		46C9CF501EA70D5B001D3B44 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		4ED917E6A09795A240104D4F /* Pods-MHacks9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHacks9.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MHacks9/Pods-MHacks9.debug.xcconfig"; sourceTree = "<group>"; };
 		6E482F051E86ED59000A6836 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		6EE964791E86EFAF00B41E5E /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				46A64E311E879457006B1D8C /* CreateViewController.swift */,
 				46C9CF3A1EA1CE8A001D3B44 /* EventPostViewController.swift */,
 				46C9CF3C1EA1CEA7001D3B44 /* EventsViewController.swift */,
+				46C9CF4E1EA70D09001D3B44 /* PersonalEventsViewController.swift */,
+				46C9CF501EA70D5B001D3B44 /* CreateEventViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -313,6 +319,8 @@
 				AE91A36B1E862AC700E460D6 /* LogInViewController.swift in Sources */,
 				AE91A3691E862AC700E460D6 /* AppDelegate.swift in Sources */,
 				46C9CF4D1EA6DBEA001D3B44 /* LocationsTableViewCell.swift in Sources */,
+				46C9CF511EA70D5B001D3B44 /* CreateEventViewController.swift in Sources */,
+				46C9CF4F1EA70D09001D3B44 /* PersonalEventsViewController.swift in Sources */,
 				AE41BDB91E87481F00315004 /* parseText.swift in Sources */,
 				AE3112761E87012400864E6A /* Facebook.swift in Sources */,
 				6EE9647E1E86F0EB00B41E5E /* ProfileViewController.swift in Sources */,

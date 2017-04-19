@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class RemindersTableViewCell: UITableViewCell {
     /*
@@ -22,6 +23,15 @@ class RemindersTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
     
+    @IBOutlet weak var shortDescriptionLabel: UILabel!
+    @IBOutlet weak var fullDescriptionLabel: UILabel!
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var first: UIView?
+    var second: UIView?
+    var third: UIView?
+    var fourth: UIView?
 
     override func awakeFromNib() {
         super.awakeFromNib()

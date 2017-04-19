@@ -9,6 +9,8 @@
 import UIKit
 
 class LocationsTableViewCell: UITableViewCell {
+    @IBOutlet weak var venueLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

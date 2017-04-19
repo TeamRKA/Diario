@@ -673,10 +673,10 @@
             </objects>
             <point key="canvasLocation" x="4551.1999999999998" y="-497.00149925037488"/>
         </scene>
-        <!--View Controller-->
+        <!--Personal Events View Controller-->
         <scene sceneID="l6t-Ra-PTf">
             <objects>
-                <viewController id="FcQ-LZ-Ekr" sceneMemberID="viewController">
+                <viewController id="FcQ-LZ-Ekr" customClass="PersonalEventsViewController" customModule="MHacks9" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l2O-QQ-WGH"/>
                         <viewControllerLayoutGuide type="bottom" id="Ayj-Gp-KLE"/>
@@ -726,13 +726,13 @@
                                                             <rect key="frame" x="9" y="74" width="356" height="546"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Short Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RI-ER-VS6">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Short Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RI-ER-VS6">
                                                                     <rect key="frame" x="0.0" y="0.0" width="356" height="25"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-8e-fPg">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-8e-fPg">
                                                                     <rect key="frame" x="0.0" y="29" width="356" height="25"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                                     <nil key="textColor"/>
@@ -754,7 +754,11 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="cellView" destination="Uvs-Xf-Y1q" id="BWf-3C-4EW"/>
+                                            <outlet property="eventImageView" destination="tYa-XS-57R" id="sc9-Wp-kez"/>
+                                            <outlet property="fullDescriptionLabel" destination="i5y-8e-fPg" id="H0L-z5-pNs"/>
                                             <outlet property="locationLabel" destination="gzV-6W-rh2" id="May-wg-9wN"/>
+                                            <outlet property="mapView" destination="iUX-FA-XMF" id="Fyi-ke-5m7"/>
+                                            <outlet property="shortDescriptionLabel" destination="3RI-ER-VS6" id="Iga-ms-GIq"/>
                                             <outlet property="stackView" destination="KV5-71-gag" id="Lm4-X7-w8r"/>
                                             <outlet property="timeLabel" destination="4MK-Ok-qCQ" id="WBz-YZ-Fct"/>
                                             <outlet property="titleLabel" destination="jxO-T7-uzj" id="3U3-hq-j4s"/>
@@ -765,15 +769,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="yJl-xs-NCR" id="vFm-xf-p2b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nty-FY-qFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5340" y="-490.70464767616198"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Event View Controller-->
         <scene sceneID="BtP-KS-OqW">
             <objects>
-                <viewController id="nN2-kX-lju" sceneMemberID="viewController">
+                <viewController id="nN2-kX-lju" customClass="CreateEventViewController" customModule="MHacks9" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="slm-go-KDz"/>
                         <viewControllerLayoutGuide type="bottom" id="2U2-st-Drs"/>
@@ -803,6 +810,9 @@
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textView" destination="O1U-vm-kTC" id="zPQ-6O-YGS"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="Y8J-iz-LwT" customClass="DateTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="375" height="47"/>
@@ -816,24 +826,29 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZd-0G-EZn">
                                                     <rect key="frame" x="113" y="8" width="97" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEX-GF-oyn">
                                                     <rect key="frame" x="218" y="8" width="149" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dayTextField" destination="gZd-0G-EZn" id="hVJ-v0-6dU"/>
+                                            <outlet property="monthTextField" destination="SjO-kJ-U5P" id="Fra-Lp-njl"/>
+                                            <outlet property="yearTextField" destination="XEX-GF-oyn" id="OC2-XK-XhT"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JXY-q5-XOm" customClass="TimeTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="127" width="375" height="44"/>
@@ -843,21 +858,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9EG-p3-7Sd">
-                                                    <rect key="frame" x="86" y="6" width="97" height="30"/>
+                                                    <rect key="frame" x="79" y="6" width="97" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOB-Dp-GVy">
-                                                    <rect key="frame" x="191" y="6" width="97" height="30"/>
+                                                    <rect key="frame" x="198" y="6" width="97" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGZ-cr-4Ik">
+                                                    <rect key="frame" x="184" y="7" width="6" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hourTextField" destination="9EG-p3-7Sd" id="pNB-b9-kJI"/>
+                                            <outlet property="minuteTextField" destination="GOB-Dp-GVy" id="r7p-cp-qfH"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZCw-ht-rbd" customClass="SearchTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="171" width="375" height="44"/>
@@ -873,6 +899,9 @@
                                                 </searchBar>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="searchBar" destination="BD1-pg-i5h" id="o1R-rT-KCA"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="Lcb-sY-4AG" customClass="LocationsTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="215" width="375" height="69"/>
@@ -897,12 +926,19 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locationLabel" destination="y1r-qC-9aH" id="U5E-xH-x3r"/>
+                                            <outlet property="venueLabel" destination="h2E-Lb-Trg" id="S3O-zk-saS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="vNe-aq-Fp9" id="9Y6-uV-pzS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38f-aq-9n8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
