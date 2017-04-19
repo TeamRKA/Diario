@@ -79,8 +79,9 @@ class CaptureViewController: UIViewController,  UIImagePickerControllerDelegate,
    // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! UINavigationController
-        let vc = destination.topViewController as! CreateViewController
+        let vc = destination.topViewController as! CreateEventViewController
         vc.date = self.date
+        vc.image = self.image
    }
    
     @IBAction func onSwipeUp(_ sender: UISwipeGestureRecognizer) {

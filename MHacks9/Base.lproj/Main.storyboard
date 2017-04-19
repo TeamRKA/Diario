@@ -794,7 +794,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="52" id="MiB-yj-cnq" customClass="DescriptionTableViewCell" customModule="MHacks9" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" rowHeight="52" id="MiB-yj-cnq" customClass="DescriptionTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MiB-yj-cnq" id="e4g-ED-qhi">
@@ -814,7 +814,7 @@
                                             <outlet property="textView" destination="O1U-vm-kTC" id="zPQ-6O-YGS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="Y8J-iz-LwT" customClass="DateTableViewCell" customModule="MHacks9" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" rowHeight="47" id="Y8J-iz-LwT" customClass="DateTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="375" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y8J-iz-LwT" id="hrn-x1-Qut">
@@ -850,7 +850,7 @@
                                             <outlet property="yearTextField" destination="XEX-GF-oyn" id="OC2-XK-XhT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JXY-q5-XOm" customClass="TimeTableViewCell" customModule="MHacks9" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeCell" id="JXY-q5-XOm" customClass="TimeTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="127" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JXY-q5-XOm" id="L56-75-IaR">
@@ -885,7 +885,7 @@
                                             <outlet property="minuteTextField" destination="GOB-Dp-GVy" id="r7p-cp-qfH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZCw-ht-rbd" customClass="SearchTableViewCell" customModule="MHacks9" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" id="ZCw-ht-rbd" customClass="SearchTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="171" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZCw-ht-rbd" id="45j-4R-fm6">
@@ -903,7 +903,7 @@
                                             <outlet property="searchBar" destination="BD1-pg-i5h" id="o1R-rT-KCA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="Lcb-sY-4AG" customClass="LocationsTableViewCell" customModule="MHacks9" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="69" id="Lcb-sY-4AG" customClass="LocationsTableViewCell" customModule="MHacks9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="215" width="375" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lcb-sY-4AG" id="c0P-Bm-O5L">
