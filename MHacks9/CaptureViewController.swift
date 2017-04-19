@@ -9,7 +9,7 @@
 import UIKit
 import CameraManager
 
-class CaptureViewController: UIViewController {
+class CaptureViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   var image: UIImage?
   let cameraManager = CameraManager()
@@ -83,5 +83,44 @@ class CaptureViewController: UIViewController {
         vc.date = self.date
    }
    
+    @IBAction func onSwipeUp(_ sender: UISwipeGestureRecognizer) {
+        
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Get the image captured by the UIImagePickerController
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        //let size = CGSize(width: 288, height: 288)
+        //let newImage = resize(image: editedImage, newSize: size)
+        
+        //if let image = editedImage {
+            self.image = editedImage
+            GoogleCloudVisionAPI.getText(from: image!)
+            //let date = parseText.getDate(input: GoogleCloudVisionAPI.recognizedText)
+            let date = self.callParseTextLinebyLine(input: GoogleCloudVisionAPI.recognizedText)
+            if ((date) != nil){
+                self.date = date
+                self.performSegue(withIdentifier: "captureSegue", sender: nil)
+            }
+            else{
+                let alert = UIAlertController(title: "An Error Occurred", message: "An error occurred when looking for a date. Please try again.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alert.addAction(action)
+                self.show(alert, sender: nil)
+            }
+        
+        // Do something with the images (based on your use case
+        // Dismiss UIImagePickerController to go back to your original view controller
+      
+    }
   
 }
