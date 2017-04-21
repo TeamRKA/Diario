@@ -15,12 +15,16 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     var image: UIImage?
     
     var locations: [NSDictionary]?
+    
+    var nearString = "chicago"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,24 +142,58 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setUpNearCell(cell: SearchTableViewCell) -> SearchTableViewCell {
-        cell.searchBar.tag = 0
-        cell.searchBar.delegate = self
+        cell.searchField.tag = 5
+        cell.searchField.delegate = self
         
         return cell
     }
     
     func setUpLocationSearchCell(cell: SearchTableViewCell) -> SearchTableViewCell {
-        cell.searchBar.tag = 1
-        cell.searchBar.delegate = self
+        cell.searchField.tag = 6
+        cell.searchField.delegate = self
         
+//        FourSquareAPI.shared.getVenues(near: "Chicago, Il", searchText: "sears", success: { (dict: [NSDictionary]) in
+//            self.locations = dict
+//            
+//            self.tableView.reloadData()
+//            
+//        }) { (error: Error) in
+//            print(error.localizedDescription)
+//        }
         return cell
     }
     
     func setUpLocationCell(cell: LocationsTableViewCell, location: NSDictionary) -> LocationsTableViewCell {
         cell.venueLabel.text = location["name"] as? String
-        cell.locationLabel.text = (location["city"] as? String)! + ", " + (location["state"] as? String)!
+        let loc = location["location"] as! NSDictionary
+        cell.locationLabel.text = (loc["city"] as? String)! + ", " + (loc["state"] as? String)!
         
         return cell
+    }
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if textField.tag == 5 {
+//            nearString = textField.text ?? ""
+//        }
+//    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == 6 {
+            if nearString == "" {
+                return true
+            }
+            let newString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            FourSquareAPI.shared.getVenues(near: nearString, searchText: newString, success: { (response: [NSDictionary]) in
+                self.locations = response
+                self.tableView.reloadData()
+                textField.resignFirstResponder()
+                textField.becomeFirstResponder()
+            }, failure: { (error: Error) in
+                print(error.localizedDescription)
+            })
+        }
+        
+        return true
     }
     
 

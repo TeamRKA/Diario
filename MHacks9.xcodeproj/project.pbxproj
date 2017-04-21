@@ -22,6 +22,7 @@
 		46C9CF4D1EA6DBEA001D3B44 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF4C1EA6DBEA001D3B44 /* LocationsTableViewCell.swift */; };
 		46C9CF4F1EA70D09001D3B44 /* PersonalEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF4E1EA70D09001D3B44 /* PersonalEventsViewController.swift */; };
 		46C9CF511EA70D5B001D3B44 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF501EA70D5B001D3B44 /* CreateEventViewController.swift */; };
+		46FC2ADC1EA96B3B002D3258 /* FourSquareAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FC2ADB1EA96B3B002D3258 /* FourSquareAPI.swift */; };
 		6E482F061E86ED59000A6836 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E482F051E86ED59000A6836 /* RemindersViewController.swift */; };
 		6EE9647A1E86EFAF00B41E5E /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE964791E86EFAF00B41E5E /* RemindersTableViewCell.swift */; };
 		6EE9647C1E86EFE700B41E5E /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9647B1E86EFE700B41E5E /* CaptureViewController.swift */; };
@@ -53,6 +54,7 @@
 		46C9CF4C1EA6DBEA001D3B44 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsTableViewCell.swift; path = Assets.xcassets/LocationsTableViewCell.swift; sourceTree = "<group>"; };
 		46C9CF4E1EA70D09001D3B44 /* PersonalEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalEventsViewController.swift; sourceTree = "<group>"; };
 		46C9CF501EA70D5B001D3B44 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		46FC2ADB1EA96B3B002D3258 /* FourSquareAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourSquareAPI.swift; sourceTree = "<group>"; };
 		4ED917E6A09795A240104D4F /* Pods-MHacks9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHacks9.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MHacks9/Pods-MHacks9.debug.xcconfig"; sourceTree = "<group>"; };
 		6E482F051E86ED59000A6836 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		6EE964791E86EFAF00B41E5E /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				46B0E1581E87342B0015D036 /* GoogleCloudVisionAPI.swift */,
+				46FC2ADB1EA96B3B002D3258 /* FourSquareAPI.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				6EE964801E86F13400B41E5E /* DetailViewController.swift in Sources */,
 				46C9CF3D1EA1CEA7001D3B44 /* EventsViewController.swift in Sources */,
 				46C9CF491EA6DBC7001D3B44 /* TimeTableViewCell.swift in Sources */,
+				46FC2ADC1EA96B3B002D3258 /* FourSquareAPI.swift in Sources */,
 				46C9CF3B1EA1CE8A001D3B44 /* EventPostViewController.swift in Sources */,
 				46C9CF3F1EA31DA9001D3B44 /* EventsPostTableViewCell.swift in Sources */,
 				46B0E1591E87342B0015D036 /* GoogleCloudVisionAPI.swift in Sources */,

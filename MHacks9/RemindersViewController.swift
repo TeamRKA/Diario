@@ -10,8 +10,8 @@ import UIKit
 import Firebase
 import MBProgressHUD
 
-class RemindersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class RemindersViewController: UIViewController/*, UITableViewDataSource, UITableViewDelegate*/ {
+/*
     @IBOutlet weak var tableView: UITableView!
     
     var events: [NSDictionary]?
@@ -140,5 +140,5 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         // Pass the selected object to the new view controller.
     }
     */
-
+*/
 }
