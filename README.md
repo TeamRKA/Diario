@@ -19,9 +19,10 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
+- [X] Make Views Look Nicer
 - [ ] Support Facebook Events 
 - [ ] Allow user to write notes
-- [ ] Personal user accounts
+- [X] Personal user accounts
 - [ ] Add MapView for events nearby
 
 <!--## Wireframe
