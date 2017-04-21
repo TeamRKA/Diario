@@ -16,7 +16,9 @@ class FourSquareAPI: NSObject {
     static let shared = FourSquareAPI()
     
     func getVenues(near: String, searchText: String, success: @escaping ([NSDictionary]) -> (), failure: @escaping (Error) -> ()) {
-        let urlString = "https://api.foursquare.com/v2/venues/suggestCompletion?near=\(near.components(separatedBy: .whitespaces).joined())&query=\(searchText)&client_id=\(key)&client_secret=\(secret)&v=20170420&limit=8"
+        let nearString = near.components(separatedBy: .whitespaces).joined()
+        let searchString = searchText.components(separatedBy: .whitespaces).joined()
+        let urlString = "https://api.foursquare.com/v2/venues/suggestCompletion?near=\(nearString)&query=\(searchString)&client_id=\(key)&client_secret=\(secret)&v=20170420&limit=8"
         
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)

@@ -16,7 +16,10 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
     var locations: [NSDictionary]?
     
-    var nearString = "chicago"
+    var nearString = ""
+    var searchString = ""
+    
+    var isSearching = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +36,12 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 5 {
-            return 1 + (locations?.count ?? 0)
+        if section == 6 {
+            return locations?.count ?? 0
         }
         return 1
     }
@@ -62,8 +65,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         else if section == 5 {
             return "Location"
         }
-        return ""
+        return nil
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -86,14 +90,13 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
             return setUpNearCell(cell: cell)
         }
+        else if indexPath.section == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
+            return setUpLocationSearchCell(cell: cell)
+        }
         else {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
-                return setUpLocationSearchCell(cell: cell)
-            }
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as! LocationsTableViewCell
-            let location = locations?[indexPath.row - 1]
+            let location = locations?[indexPath.row]
             return setUpLocationCell(cell: cell, location: location!)
         }
     }
@@ -145,6 +148,10 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         cell.searchField.tag = 5
         cell.searchField.delegate = self
         
+        if isSearching {
+            cell.searchField.becomeFirstResponder()
+        }
+        
         return cell
     }
     
@@ -152,14 +159,10 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         cell.searchField.tag = 6
         cell.searchField.delegate = self
         
-//        FourSquareAPI.shared.getVenues(near: "Chicago, Il", searchText: "sears", success: { (dict: [NSDictionary]) in
-//            self.locations = dict
-//            
-//            self.tableView.reloadData()
-//            
-//        }) { (error: Error) in
-//            print(error.localizedDescription)
-//        }
+        if isSearching {
+            cell.searchField.becomeFirstResponder()
+        }
+        
         return cell
     }
     
@@ -171,23 +174,33 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        if textField.tag == 5 {
-//            nearString = textField.text ?? ""
-//        }
-//    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        isSearching = false
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.tag == 6 {
+        if textField.tag == 5 {
+            nearString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            if searchString == "" {
+                return true
+            }
+            FourSquareAPI.shared.getVenues(near: nearString, searchText: searchString, success: { (response: [NSDictionary]) in
+                self.locations = response
+                self.isSearching = textField.isFirstResponder
+                self.tableView.reloadData()
+            }, failure: { (error: Error) in
+                print(error.localizedDescription)
+            })
+        }
+        else if textField.tag == 6 {
+            searchString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if nearString == "" {
                 return true
             }
-            let newString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
-            FourSquareAPI.shared.getVenues(near: nearString, searchText: newString, success: { (response: [NSDictionary]) in
+            FourSquareAPI.shared.getVenues(near: nearString, searchText: searchString, success: { (response: [NSDictionary]) in
                 self.locations = response
-                self.tableView.reloadData()
-                textField.resignFirstResponder()
-                textField.becomeFirstResponder()
+                self.isSearching = textField.isFirstResponder
+                self.tableView.reloadSections([6], with: .automatic)
             }, failure: { (error: Error) in
                 print(error.localizedDescription)
             })
