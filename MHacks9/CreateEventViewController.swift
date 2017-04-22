@@ -19,7 +19,6 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     var nearString = ""
     var searchString = ""
     
-    var isSearching = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +27,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         
         tableView.tableFooterView = UIView()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,9 +103,25 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section < 6 {
+            tableView.deselectRow(at: indexPath, animated: false)
+            return
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        let location = locations?[indexPath.row]
+        searchString = location?["name"] as! String
+        let loc = location?["location"] as! NSDictionary
+        nearString = "\(loc["city"] as! String), \(loc["state"] as! String)"
+        locations = []
+        tableView.reloadData()
+    }
+    
     func setUpTitleCell(cell: DescriptionTableViewCell) -> DescriptionTableViewCell {
         cell.textView.tag = 0
         cell.textView.delegate = self
+        
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -121,6 +139,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         cell.dayTextField.delegate = self
         cell.yearTextField.delegate = self
         
+        cell.selectionStyle = .none
+        
         return cell
     }
     
@@ -134,12 +154,16 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         cell.hourTextField.delegate = self
         cell.minuteTextField.delegate = self
         
+        cell.selectionStyle = .none
+        
         return cell
     }
     
     func setUpDescriptionCell(cell: DescriptionTableViewCell) -> DescriptionTableViewCell {
         cell.textView.tag = 1
         cell.textView.delegate = self
+        
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -148,9 +172,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         cell.searchField.tag = 5
         cell.searchField.delegate = self
         
-        if isSearching {
-            cell.searchField.becomeFirstResponder()
-        }
+        cell.searchField.text = nearString
+        
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -159,9 +183,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         cell.searchField.tag = 6
         cell.searchField.delegate = self
         
-        if isSearching {
-            cell.searchField.becomeFirstResponder()
-        }
+        cell.searchField.text = searchString
+        
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -174,20 +198,38 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        isSearching = false
-    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.tag == 5 {
+        if textField.tag == 0 {
+            let dayString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            if let dayString = Int(dayString) {
+                if Int(dayString) > 12 {
+                    return false
+                }
+            }
+            if let text = textField.text {
+                return !(text.characters.count > 1 && string.characters.count > range.length)
+            }
+        }
+        else if textField.tag == 1 {
+            
+        }
+        else if textField.tag == 2 {
+            
+        }
+        else if textField.tag == 3 {
+            
+        }
+        else if textField.tag == 4 {
+            
+        }
+        else if textField.tag == 5 {
             nearString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if searchString == "" {
                 return true
             }
             FourSquareAPI.shared.getVenues(near: nearString, searchText: searchString, success: { (response: [NSDictionary]) in
                 self.locations = response
-                self.isSearching = textField.isFirstResponder
-                self.tableView.reloadData()
+                self.tableView.reloadSections([6], with: .automatic)
             }, failure: { (error: Error) in
                 print(error.localizedDescription)
             })
@@ -199,7 +241,6 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
             }
             FourSquareAPI.shared.getVenues(near: nearString, searchText: searchString, success: { (response: [NSDictionary]) in
                 self.locations = response
-                self.isSearching = textField.isFirstResponder
                 self.tableView.reloadSections([6], with: .automatic)
             }, failure: { (error: Error) in
                 print(error.localizedDescription)
@@ -207,6 +248,15 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let contentOffset = tableView.contentOffset
+        UIView.setAnimationsEnabled(false)
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        UIView.setAnimationsEnabled(true)
+        self.tableView.setContentOffset(contentOffset, animated: false)
     }
     
 
