@@ -18,6 +18,13 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
     var nearString = ""
     var searchString = ""
+    var titleString = ""
+    var dayString = ""
+    var monthString = ""
+    var yearString = ""
+    var hourString = ""
+    var minuteString = ""
+    var descriptionString = ""
     
 
     override func viewDidLoad() {
@@ -200,27 +207,64 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.tag == 0 {
-            let dayString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
-            if let dayString = Int(dayString) {
-                if Int(dayString) > 12 {
+            let monthString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            if let monthString = Int(monthString) {
+                if monthString > 12 {
                     return false
                 }
             }
+            self.monthString = monthString
             if let text = textField.text {
                 return !(text.characters.count > 1 && string.characters.count > range.length)
             }
         }
         else if textField.tag == 1 {
-            
+            let dayString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            if let dayString = Int(dayString) {
+                if dayString > 31 {
+                    return false
+                }
+            }
+            self.dayString = dayString
+            if let text = textField.text {
+                return !(text.characters.count > 1 && string.characters.count > range.length)
+            }
         }
         else if textField.tag == 2 {
-            
+            let yearString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            if let text = textField.text {
+                if !(text.characters.count > 3 && string.characters.count > range.length) {
+                    self.yearString = yearString
+                    return true
+                }
+                else {
+                    return false
+                }
+            }
         }
         else if textField.tag == 3 {
-            
+            let hourString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            if let hourString = Int(hourString) {
+                if hourString > 23 {
+                    return false
+                }
+            }
+            self.hourString = hourString
+            if let text = textField.text {
+                return !(text.characters.count > 1 && string.characters.count > range.length)
+            }
         }
         else if textField.tag == 4 {
-            
+            let minuteString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
+            if let minuteString = Int(minuteString) {
+                if minuteString > 59 {
+                    return false
+                }
+            }
+            self.minuteString = minuteString
+            if let text = textField.text {
+                return !(text.characters.count > 1 && string.characters.count > range.length)
+            }
         }
         else if textField.tag == 5 {
             nearString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
@@ -250,6 +294,58 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         return true
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 0 {
+            if let text = textField.text {
+                if text != "" && text.characters.count < 2 {
+                    textField.text = "0" + text
+                    monthString = textField.text!
+                }
+            }
+        }
+        else if textField.tag == 1 {
+            if let text = textField.text {
+                if text != "" && text.characters.count < 2 {
+                    textField.text = "0" + text
+                    dayString = textField.text!
+                }
+            }
+        }
+        else if textField.tag == 2 {
+            if let text = textField.text {
+                let len = text.characters.count
+                if text != "" && len < 4 {
+                    if len == 1 {
+                        textField.text = "000" + text
+                    }
+                    else if len == 2 {
+                        textField.text = "00" + text
+                    }
+                    else if len == 3 {
+                        textField.text = "0" + text
+                    }
+                    yearString = textField.text!
+                }
+            }
+        }
+        else if textField.tag == 3 {
+            if let text = textField.text {
+                if text != "" && text.characters.count < 2 {
+                    textField.text = "0" + text
+                    hourString = textField.text!
+                }
+            }
+        }
+        else if textField.tag == 4 {
+            if let text = textField.text {
+                if text != "" && text.characters.count < 2 {
+                    textField.text = "0" + text
+                    minuteString = textField.text!
+                }
+            }
+        }
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         let contentOffset = tableView.contentOffset
         UIView.setAnimationsEnabled(false)
@@ -257,6 +353,19 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.endUpdates()
         UIView.setAnimationsEnabled(true)
         self.tableView.setContentOffset(contentOffset, animated: false)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.tag == 0 {
+            if let text = textView.text {
+                titleString = text
+            }
+        }
+        else if textView.tag == 1 {
+            if let text = textView.text {
+                descriptionString = text
+            }
+        }
     }
     
 
