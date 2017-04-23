@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -368,6 +369,15 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    @IBAction func onCancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onSave(_ sender: Any) {
+        var ref: FIRDatabaseReference!
+        let user = FIRAuth.auth()?.currentUser
+        ref = FIRDatabase.database().reference()
+    }
 
     /*
     // MARK: - Navigation

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     
-    /*
+    
     FIRApp.configure()
     
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("access denied")
         }
     }
- */
+ 
     
     return true
   }
