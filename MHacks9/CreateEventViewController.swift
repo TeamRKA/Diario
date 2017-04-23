@@ -377,6 +377,10 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         var ref: FIRDatabaseReference!
         let user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
+        
+        let autoID: String!
+        
+        let storageRef = FIRStorage.storage().reference("users/" + autoID)
     }
 
     /*
