@@ -10,15 +10,15 @@ import UIKit
 import Firebase
 import MBProgressHUD
 
-class RemindersViewController: UIViewController/*, UITableViewDataSource, UITableViewDelegate*/ {
-/*
+class RemindersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet weak var tableView: UITableView!
     
     var events: [NSDictionary]?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        /*
         MBProgressHUD.showAdded(to: self.view, animated: true)
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
@@ -61,7 +61,7 @@ class RemindersViewController: UIViewController/*, UITableViewDataSource, UITabl
         }
         ) { (error) in
             print(error.localizedDescription)
-        }
+        }*/
     }
     
     override func viewDidLoad() {
@@ -94,7 +94,7 @@ class RemindersViewController: UIViewController/*, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reminders", for: indexPath) as! RemindersTableViewCell
-        
+        /*
         let event = events?[(events?.count)! - 1 - indexPath.row]
         
         cell.titleLabel.text = event?["name"] as? String
@@ -128,7 +128,7 @@ class RemindersViewController: UIViewController/*, UITableViewDataSource, UITabl
             cell.scheduleView.image = #imageLiteral(resourceName: "iconmonstr-help-3-240")
             cell.scheduleView.tintColor = .blue
         }
-        
+        */
         return cell
     }
     /*
@@ -140,5 +140,5 @@ class RemindersViewController: UIViewController/*, UITableViewDataSource, UITabl
         // Pass the selected object to the new view controller.
     }
     */
-*/
+
 }

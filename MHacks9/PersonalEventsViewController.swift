@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonalEventsViewController: UIViewController {
+class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -22,6 +22,15 @@ class PersonalEventsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        return cell
+    }
 
     /*
     // MARK: - Navigation

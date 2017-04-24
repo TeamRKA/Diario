@@ -29,6 +29,33 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     var longitude = 0.0
     var latitude = 0.0
     
+    var textTag = -1
+    var editingTextField: UITextField?
+    var editingTextView: UITextView?
+    
+    @IBOutlet var toolBar: UIToolbar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if let date = self.date {
+            var dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-yyyy-MM HH:mm:ss"
+            
+            let dateString = dateFormatter.string(from: self.date!)
+            
+            let arr2 = dateString.components(separatedBy: " ")
+            let arr3 = arr2[1].components(separatedBy: ":")
+            let arr = arr2[0].components(separatedBy: "-")
+            
+            monthString = arr[2]
+            dayString = arr[0]
+            yearString = arr[1]
+            
+            hourString = arr3[0]
+            minuteString = arr3[1]
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +67,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,9 +159,20 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        
+        if let textLabel = header.textLabel {
+            textLabel.font = textLabel.font.withSize(16)
+        }
+    }
+    
     func setUpTitleCell(cell: DescriptionTableViewCell) -> DescriptionTableViewCell {
-        cell.textView.tag = 0
+        cell.textView.tag = 1
         cell.textView.delegate = self
+        
+        cell.textView.layer.borderColor = UIColor.lightGray.cgColor
+        cell.textView.layer.borderWidth = 1
         
         cell.selectionStyle = .none
         
@@ -139,13 +180,30 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setUpDateCell(cell: DateTableViewCell) -> DateTableViewCell {
-        cell.monthTextField.tag = 0
-        cell.dayTextField.tag = 1
-        cell.yearTextField.tag = 2
+        cell.monthTextField.tag = 2
+        cell.dayTextField.tag = 3
+        cell.yearTextField.tag = 4
         
-        cell.monthTextField.placeholder = "MM"
-        cell.dayTextField.placeholder = "DD"
-        cell.yearTextField.placeholder = "YYYY"
+        if monthString == "" {
+            cell.monthTextField.placeholder = "MM"
+        }
+        else  {
+            cell.monthTextField.text = monthString
+        }
+        
+        if dayString == "" {
+            cell.dayTextField.placeholder = "DD"
+        }
+        else {
+            cell.dayTextField.text = dayString
+        }
+        
+        if yearString == "" {
+            cell.yearTextField.placeholder = "YYYY"
+        }
+        else {
+            cell.yearTextField.text = yearString
+        }
         
         cell.monthTextField.delegate = self
         cell.dayTextField.delegate = self
@@ -157,11 +215,23 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setUpTimeCell(cell: TimeTableViewCell) -> TimeTableViewCell {
-        cell.hourTextField.tag = 3
-        cell.minuteTextField.tag = 4
+        cell.hourTextField.tag = 5
+        cell.minuteTextField.tag = 6
         
-        cell.hourTextField.placeholder = "HH"
-        cell.minuteTextField.placeholder = "MM"
+        if hourString == "" {
+            cell.hourTextField.placeholder = "HH"
+        }
+        else {
+            cell.hourTextField.text = hourString
+        }
+        
+        if minuteString == "" {
+            cell.minuteTextField.placeholder = "MM"
+        }
+        else {
+            cell.minuteTextField.text = minuteString
+        }
+        
         
         cell.hourTextField.delegate = self
         cell.minuteTextField.delegate = self
@@ -172,16 +242,19 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setUpDescriptionCell(cell: DescriptionTableViewCell) -> DescriptionTableViewCell {
-        cell.textView.tag = 1
+        cell.textView.tag = 7
         cell.textView.delegate = self
         
         cell.selectionStyle = .none
+        
+        cell.textView.layer.borderColor = UIColor.lightGray.cgColor
+        cell.textView.layer.borderWidth = 1
         
         return cell
     }
     
     func setUpNearCell(cell: SearchTableViewCell) -> SearchTableViewCell {
-        cell.searchField.tag = 5
+        cell.searchField.tag = 8
         cell.searchField.delegate = self
         
         cell.searchField.text = nearString
@@ -192,7 +265,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setUpLocationSearchCell(cell: SearchTableViewCell) -> SearchTableViewCell {
-        cell.searchField.tag = 6
+        cell.searchField.tag = 9
         cell.searchField.delegate = self
         
         cell.searchField.text = searchString
@@ -204,14 +277,19 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
     func setUpLocationCell(cell: LocationsTableViewCell, location: NSDictionary) -> LocationsTableViewCell {
         cell.venueLabel.text = location["name"] as? String
-        let loc = location["location"] as! NSDictionary
-        cell.locationLabel.text = (loc["city"] as? String)! + ", " + (loc["state"] as? String)!
+        let loc = location["location"] as? NSDictionary
+        if let loc = loc {
+            guard let city = loc["city"] as? String, let state = loc["state"] as? String else {
+                return cell
+            }
+            cell.locationLabel.text = city + ", " + state
+        }
         
         return cell
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.tag == 0 {
+        if textField.tag == 2 {
             let monthString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if let monthString = Int(monthString) {
                 if monthString > 12 {
@@ -223,7 +301,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 return !(text.characters.count > 1 && string.characters.count > range.length)
             }
         }
-        else if textField.tag == 1 {
+        else if textField.tag == 3 {
             let dayString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if let dayString = Int(dayString) {
                 if dayString > 31 {
@@ -235,7 +313,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 return !(text.characters.count > 1 && string.characters.count > range.length)
             }
         }
-        else if textField.tag == 2 {
+        else if textField.tag == 4 {
             let yearString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if let text = textField.text {
                 if !(text.characters.count > 3 && string.characters.count > range.length) {
@@ -247,7 +325,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
-        else if textField.tag == 3 {
+        else if textField.tag == 5 {
             let hourString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if let hourString = Int(hourString) {
                 if hourString > 23 {
@@ -259,7 +337,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 return !(text.characters.count > 1 && string.characters.count > range.length)
             }
         }
-        else if textField.tag == 4 {
+        else if textField.tag == 6 {
             let minuteString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if let minuteString = Int(minuteString) {
                 if minuteString > 59 {
@@ -271,7 +349,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 return !(text.characters.count > 1 && string.characters.count > range.length)
             }
         }
-        else if textField.tag == 5 {
+        else if textField.tag == 8 {
             nearString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if searchString == "" {
                 return true
@@ -283,7 +361,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 print(error.localizedDescription)
             })
         }
-        else if textField.tag == 6 {
+        else if textField.tag == 9 {
             searchString = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if nearString == "" {
                 return true
@@ -299,8 +377,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         return true
     }
     
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.tag == 0 {
+        if textField.tag == 2 {
             if let text = textField.text {
                 if text != "" && text.characters.count < 2 {
                     textField.text = "0" + text
@@ -308,7 +387,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
-        else if textField.tag == 1 {
+        else if textField.tag == 3 {
             if let text = textField.text {
                 if text != "" && text.characters.count < 2 {
                     textField.text = "0" + text
@@ -316,7 +395,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
-        else if textField.tag == 2 {
+        else if textField.tag == 4 {
             if let text = textField.text {
                 let len = text.characters.count
                 if text != "" && len < 4 {
@@ -333,7 +412,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
-        else if textField.tag == 3 {
+        else if textField.tag == 5 {
             if let text = textField.text {
                 if text != "" && text.characters.count < 2 {
                     textField.text = "0" + text
@@ -341,7 +420,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
-        else if textField.tag == 4 {
+        else if textField.tag == 6 {
             if let text = textField.text {
                 if text != "" && text.characters.count < 2 {
                     textField.text = "0" + text
@@ -350,6 +429,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
+    
     
     func textViewDidChange(_ textView: UITextView) {
         let contentOffset = tableView.contentOffset
@@ -361,16 +441,97 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.tag == 0 {
+        if textView.tag == 1 {
             if let text = textView.text {
                 titleString = text
             }
         }
-        else if textView.tag == 1 {
+        else if textView.tag == 7 {
             if let text = textView.text {
                 descriptionString = text
             }
         }
+    }
+    
+    
+    @IBAction func tapControl(_ sender: UISegmentedControl) {
+        var nextTag: Int!
+        let index = sender.selectedSegmentIndex
+        sender.selectedSegmentIndex = UISegmentedControlNoSegment
+        if let textField = editingTextField {
+            nextTag = textField.tag + (index == 0 ? -1 : 1)
+            print(nextTag)
+            let nextResponder = textField.superview?.superview?.superview?.viewWithTag(nextTag) as UIResponder!
+            
+            if nextResponder == nil {
+                textField.resignFirstResponder()
+                editingTextField = nil
+                
+            }
+            else {
+                editingTextField = nil
+                nextResponder?.becomeFirstResponder()
+                
+            }
+        }
+        else if let textView = editingTextView {
+            nextTag = textView.tag + (index == 0 ? -1 : 1)
+            print(nextTag)
+            let nextResponder = textView.superview?.superview?.superview?.viewWithTag(nextTag) as UIResponder!
+            
+            if nextResponder == nil {
+                textView.resignFirstResponder()
+                editingTextView = nil
+            }
+            else {
+                editingTextView = nil
+                nextResponder?.becomeFirstResponder()
+            }
+        }
+    }
+    
+    
+    @IBAction func finishTyping(_ sender: Any) {
+        if let text = editingTextField {
+            text.resignFirstResponder()
+        }
+        else if let text = editingTextView {
+            text.resignFirstResponder()
+        }
+        editingTextField = nil
+        editingTextView = nil
+        
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.inputAccessoryView = toolBar
+        textTag = textField.tag
+        editingTextField = textField
+        editingTextView = nil
+        return true
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        textView.inputAccessoryView = toolBar
+        textTag = textView.tag
+        editingTextView = textView
+        editingTextField = nil
+        return true
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var userInfo = notification.userInfo
+        var keyboardFrame = (userInfo?[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset = self.tableView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        self.tableView.contentInset = contentInset
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        self.tableView.contentInset = contentInset
     }
     
     @IBAction func onCancel(_ sender: Any) {
@@ -378,6 +539,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func onSave(_ sender: Any) {
+        if titleString == "" || monthString == "" || dayString == "" || yearString == "" || hourString == "" || minuteString == "" || searchString == "" {
+            return
+        }
         var ref: FIRDatabaseReference!
         let user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
@@ -387,17 +551,38 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         let date = "\(monthString)-\(dayString)-\(yearString)"
         let time = "\(hourString):\(minuteString)"
         
-        let dict = ["title" : titleString, "date" : date, "time" : time, "description" : descriptionString, "near" : nearString, "location" : searchString, "longitude" : longitude, "latitude" : latitude] as [String : Any]
+        let dict = ["title" : titleString, "date" : date, "time" : time, "description" : descriptionString, "near" : nearString, "location" : searchString, "longitude" : longitude, "latitude" : latitude, "eventPhoto" : ""] as [String : Any]
         let dataRef = ref.child("events").childByAutoId()
         dataRef.setValue(dict)
         
         autoID = dataRef.key
         
-        ref.child("users").child((user?.email)!).child("events").child(autoID).setValue(true)
+        ref.child("users").child(user!.uid).child("events").child(autoID).setValue(true)
         
-        
-        
-        let storageRef = FIRStorage.storage().reference().child("users/" + autoID)
+        if let image = self.image {
+            var data = Data()
+            data = UIImageJPEGRepresentation(image, 0.8)!
+            
+            let metadata = FIRStorageMetadata()
+            
+            metadata.contentType = "image/jpeg"
+            
+            let storageRef = FIRStorage.storage().reference().child(user!.uid + "/" + autoID)
+            
+            storageRef.put(data, metadata: metadata, completion: { (meta: FIRStorageMetadata?, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else {
+                    let downloadURL = meta!.downloadURL()!.absoluteString
+                    dataRef.child("eventPhoto").setValue(downloadURL)
+                }
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            })
+        }
+        else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        }
     }
 
     /*

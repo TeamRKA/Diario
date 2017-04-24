@@ -35,7 +35,6 @@ class Facebook: NSObject {
       case .success(let grantedPermissions, let declinedPermissions, let accessToken):
         //self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-        
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
           // ...
           if let error = error {
@@ -45,7 +44,7 @@ class Facebook: NSObject {
             var ref: FIRDatabaseReference!
             
             ref = FIRDatabase.database().reference()
-            
+            ref.child("users").child(user!.uid).child("id").setValue(accessToken.userId)
             ref.child("users").child(user!.uid).child("email").setValue(user!.email)
             success()
           }

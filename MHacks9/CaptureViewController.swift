@@ -80,8 +80,13 @@ class CaptureViewController: UIViewController,  UIImagePickerControllerDelegate,
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! UINavigationController
         let vc = destination.topViewController as! CreateEventViewController
-        vc.date = self.date
-        vc.image = self.image
+        if let date = self.date {
+            vc.date = date
+            
+        }
+        if let image = self.image {
+            vc.image = image
+        }
    }
    
     @IBAction func onSwipeUp(_ sender: UISwipeGestureRecognizer) {
