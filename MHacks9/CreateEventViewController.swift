@@ -26,6 +26,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     var hourString = ""
     var minuteString = ""
     var descriptionString = ""
+    var longitude = 0.0
+    var latitude = 0.0
     
 
     override func viewDidLoad() {
@@ -121,6 +123,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         searchString = location?["name"] as! String
         let loc = location?["location"] as! NSDictionary
         nearString = "\(loc["city"] as! String), \(loc["state"] as! String)"
+        latitude = loc["lat"] as! Double
+        longitude = loc["lng"] as! Double
         locations = []
         tableView.reloadData()
     }
@@ -380,7 +384,20 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         let autoID: String!
         
-        let storageRef = FIRStorage.storage().reference("users/" + autoID)
+        let date = "\(monthString)-\(dayString)-\(yearString)"
+        let time = "\(hourString):\(minuteString)"
+        
+        let dict = ["title" : titleString, "date" : date, "time" : time, "description" : descriptionString, "near" : nearString, "location" : searchString, "longitude" : longitude, "latitude" : latitude] as [String : Any]
+        let dataRef = ref.child("events").childByAutoId()
+        dataRef.setValue(dict)
+        
+        autoID = dataRef.key
+        
+        ref.child("users").child((user?.email)!).child("events").child(autoID).setValue(true)
+        
+        
+        
+        let storageRef = FIRStorage.storage().reference().child("users/" + autoID)
     }
 
     /*
