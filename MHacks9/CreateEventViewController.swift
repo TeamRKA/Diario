@@ -59,7 +59,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
             
             timestamp = date.timeIntervalSince1970
             
-            reverse = timestamp * -1.0
+            reverse = timestamp! * -1.0
         }
     }
 
@@ -556,6 +556,15 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         let date = "\(monthString)-\(dayString)-\(yearString)"
         let time = "\(hourString):\(minuteString)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss ZZZ"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let eventDate = dateFormatter.date(from: date + " " + time + ":00 UTC")
+        
+        timestamp = eventDate?.timeIntervalSince1970
+        reverse = timestamp! * -1.0
         
         let dict = ["title" : titleString, "date" : date, "time" : time, "description" : descriptionString, "near" : nearString, "location" : searchString, "longitude" : longitude, "latitude" : latitude, "eventPhoto" : "", "timestamp" : timestamp, "reverseTimeStamp" : reverse] as [String : Any]
         let dataRef = ref.child("events").childByAutoId()

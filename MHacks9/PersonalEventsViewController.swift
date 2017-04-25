@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -14,7 +15,10 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
