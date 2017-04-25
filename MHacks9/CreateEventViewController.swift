@@ -13,6 +13,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     var date: Date?
+    var timestamp: Double?
+    var reverse: Double?
     var image: UIImage?
     
     var locations: [NSDictionary]?
@@ -42,7 +44,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
             var dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-yyyy-MM HH:mm:ss"
             
-            let dateString = dateFormatter.string(from: self.date!)
+            let dateString = dateFormatter.string(from: date)
             
             let arr2 = dateString.components(separatedBy: " ")
             let arr3 = arr2[1].components(separatedBy: ":")
@@ -54,6 +56,10 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
             
             hourString = arr3[0]
             minuteString = arr3[1]
+            
+            timestamp = date.timeIntervalSince1970
+            
+            reverse = timestamp * -1.0
         }
     }
 
@@ -551,7 +557,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         let date = "\(monthString)-\(dayString)-\(yearString)"
         let time = "\(hourString):\(minuteString)"
         
-        let dict = ["title" : titleString, "date" : date, "time" : time, "description" : descriptionString, "near" : nearString, "location" : searchString, "longitude" : longitude, "latitude" : latitude, "eventPhoto" : ""] as [String : Any]
+        let dict = ["title" : titleString, "date" : date, "time" : time, "description" : descriptionString, "near" : nearString, "location" : searchString, "longitude" : longitude, "latitude" : latitude, "eventPhoto" : "", "timestamp" : timestamp, "reverseTimeStamp" : reverse] as [String : Any]
         let dataRef = ref.child("events").childByAutoId()
         dataRef.setValue(dict)
         
