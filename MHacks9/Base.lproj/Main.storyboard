@@ -60,7 +60,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kyq-gK-qJn" id="aX7-47-99i">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VON-mt-0LD">
@@ -685,7 +685,7 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="635"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BAr-et-GxS" id="08q-nN-lAo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="634"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="635"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uvs-Xf-Y1q">
@@ -713,24 +713,30 @@
                                                             <rect key="frame" x="9" y="73.5" width="356" height="545.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Short Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RI-ER-VS6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="356" height="24.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="356" height="0.0"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-8e-fPg">
-                                                                    <rect key="frame" x="0.0" y="28.5" width="356" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="356" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tYa-XS-57R">
-                                                                    <rect key="frame" x="0.0" y="57.5" width="356" height="356"/>
+                                                                    <rect key="frame" x="0.0" y="28.5" width="356" height="356"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="356" id="7Ch-po-zwr"/>
                                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" priority="998" constant="356" id="C5R-Sw-7jz"/>
                                                                     </constraints>
                                                                 </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY2-uH-xon">
+                                                                    <rect key="frame" x="0.0" y="388.5" width="356" height="25"/>
+                                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iUX-FA-XMF">
                                                                     <rect key="frame" x="0.0" y="417.5" width="356" height="128"/>
                                                                     <constraints>
@@ -1218,7 +1224,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="409"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7uN-70-GAG" id="Ful-R4-4CY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="408"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="409"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsm-sa-qg8">
@@ -1378,7 +1384,7 @@
                     <tabBarItem key="tabBarItem" title="" image="circle" selectedImage="clear" id="V3t-KL-7V7"/>
                     <connections>
                         <outlet property="cameraView" destination="Ic7-0W-6Mv" id="u8Q-ES-SLB"/>
-                        <segue destination="fg9-VE-AnB" kind="presentation" id="nKo-bI-xDL"/>
+                        <segue destination="fg9-VE-AnB" kind="presentation" identifier="captureSegue" id="nKo-bI-xDL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pC9-Ee-Egw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1395,7 +1401,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fg9-VE-AnB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bcB-Y9-Dzq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bcB-Y9-Dzq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1418,7 +1424,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LYn-iF-iVf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="reminder" id="DqH-8c-ZUK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Bdg-BT-Gma">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bdg-BT-Gma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1446,6 +1452,6 @@
         <image name="reminder" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FcN-ug-m3w"/>
+        <segue reference="nKo-bI-xDL"/>
     </inferredMetricsTieBreakers>
 </document>

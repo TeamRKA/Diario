@@ -76,7 +76,7 @@ class GoogleCloudVisionAPI: NSObject {
             
             let json = JSON(data)
             
-            if let recognized = json["responses"][0]["fullTextAnnotation"]["text"].string? {
+            if let recognized = json["responses"][0]["fullTextAnnotation"]["text"].string {
                 recognizedText = recognized
             }
             

@@ -32,6 +32,7 @@ class RemindersTableViewCell: UITableViewCell {
     var second: UIView?
     var third: UIView?
     var fourth: UIView?
+    var fifth: UIView?
     
     var mapExists: Bool = true
     var photoExists: Bool = true
@@ -46,16 +47,34 @@ class RemindersTableViewCell: UITableViewCell {
         tagView.clipsToBounds = true
  */
         
+        
         first = stackView.arrangedSubviews[0]
         second = stackView.arrangedSubviews[1]
         third = stackView.arrangedSubviews[2]
-        fourth = stackView.arrangedSubviews[3]
+        fourth = stackView.arrangedSubviews[4]
+        fifth = stackView.arrangedSubviews[3]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func goToLocation(location: CLLocation) {
+        DispatchQueue.main.async {
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegionMake(location.coordinate, span)
+        self.mapView.setRegion(region, animated: false)
+        }
+    }
+    
+    func addAnnotation(location: CLLocation) {
+        DispatchQueue.main.async {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        self.mapView.addAnnotation(annotation)
+        }
     }
 
 }

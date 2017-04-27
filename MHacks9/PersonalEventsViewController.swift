@@ -155,10 +155,10 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                 
                 cell.mapView.delegate = self
                 cell.mapView.isUserInteractionEnabled = false
-                DispatchQueue.main.async {
-                    cell = self.goToLocation(location: CLLocation(latitude: lat, longitude: lng), cell: cell)
-                    cell = self.addAnnotation(location: CLLocation(latitude: lat, longitude: lng), cell: cell)
-                }
+                
+                cell.goToLocation(location: CLLocation(latitude: lat, longitude: lng))
+                cell.addAnnotation(location: CLLocation(latitude: lat, longitude: lng))
+                
                 
                 cell.third?.isHidden = true
             }
@@ -219,19 +219,19 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
         return tableView.headerView(forSection: section)
     }
     
-    func goToLocation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegionMake(location.coordinate, span)
-        cell.mapView.setRegion(region, animated: false)
-        return cell
-    }
-    
-    func addAnnotation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location.coordinate
-        cell.mapView.addAnnotation(annotation)
-        return cell
-    }
+//    func goToLocation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
+//        let span = MKCoordinateSpanMake(0.01, 0.01)
+//        let region = MKCoordinateRegionMake(location.coordinate, span)
+//        cell.mapView.setRegion(region, animated: false)
+//        return cell
+//    }
+//    
+//    func addAnnotation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = location.coordinate
+//        cell.mapView.addAnnotation(annotation)
+//        return cell
+//    }
 
     /*
     // MARK: - Navigation

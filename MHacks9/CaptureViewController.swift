@@ -47,7 +47,7 @@ class CaptureViewController: UIViewController,  UIImagePickerControllerDelegate,
         GoogleCloudVisionAPI.getText(from: image)
         //let date = parseText.getDate(input: GoogleCloudVisionAPI.recognizedText)
         let date = self.callParseTextLinebyLine(input: GoogleCloudVisionAPI.recognizedText)
-        if ((date) != nil){/Users/Avinash/Desktop/Diario/MHacks9/Base.lproj/Main.storyboard
+        if ((date) != nil){//Users/Avinash/Desktop/Diario/MHacks9/Base.lproj/Main.storyboard
             self.date = date
           self.performSegue(withIdentifier: "captureSegue", sender: nil)
         }
@@ -118,12 +118,13 @@ class CaptureViewController: UIViewController,  UIImagePickerControllerDelegate,
                 self.performSegue(withIdentifier: "captureSegue", sender: nil)
             }
             else{
-                let alert = UIAlertController(title: "An Error Occurred", message: "An error occurred when looking for a date. Please try again.", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alert.addAction(action)
-                self.show(alert, sender: nil)
+//                let alert = UIAlertController(title: "An Error Occurred", message: "An error occurred when looking for a date. Please try again.", preferredStyle: .alert)
+//                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+//                alert.addAction(action)
+//                self.show(alert, sender: nil)
             }
-        
+        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "captureSegue", sender: nil)
         // Do something with the images (based on your use case
         // Dismiss UIImagePickerController to go back to your original view controller
       
