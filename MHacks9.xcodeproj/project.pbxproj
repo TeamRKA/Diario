@@ -36,6 +36,8 @@
 		AE91A3711E862AC700E460D6 /* MHacks9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE91A36F1E862AC700E460D6 /* MHacks9.xcdatamodeld */; };
 		AE91A3731E862AC700E460D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE91A3721E862AC700E460D6 /* Assets.xcassets */; };
 		AE91A3761E862AC700E460D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE91A3741E862AC700E460D6 /* LaunchScreen.storyboard */; };
+		E1D448941EB0051C0025B75E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D448931EB0051C0025B75E /* Settings.storyboard */; };
+		E1D448961EB1250A0025B75E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D448951EB1250A0025B75E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		AE91A3721E862AC700E460D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE91A3751E862AC700E460D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE91A3771E862AC700E460D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1D448931EB0051C0025B75E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		E1D448951EB1250A0025B75E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				46C9CF3C1EA1CEA7001D3B44 /* EventsViewController.swift */,
 				46C9CF4E1EA70D09001D3B44 /* PersonalEventsViewController.swift */,
 				46C9CF501EA70D5B001D3B44 /* CreateEventViewController.swift */,
+				E1D448951EB1250A0025B75E /* SettingsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				AE91A3681E862AC700E460D6 /* AppDelegate.swift */,
 				AE91A36C1E862AC700E460D6 /* Main.storyboard */,
 				46C9CF421EA6CC1F001D3B44 /* Camera.storyboard */,
+				E1D448931EB0051C0025B75E /* Settings.storyboard */,
 				AE91A3721E862AC700E460D6 /* Assets.xcassets */,
 				AE91A3741E862AC700E460D6 /* LaunchScreen.storyboard */,
 				AE91A3771E862AC700E460D6 /* Info.plist */,
@@ -262,6 +268,7 @@
 				AE91A3761E862AC700E460D6 /* LaunchScreen.storyboard in Resources */,
 				46C9CF411EA466FA001D3B44 /* GoogleService-Info.plist in Resources */,
 				AE91A3731E862AC700E460D6 /* Assets.xcassets in Resources */,
+				E1D448941EB0051C0025B75E /* Settings.storyboard in Resources */,
 				AE91A36E1E862AC700E460D6 /* Main.storyboard in Resources */,
 				46C9CF431EA6CC1F001D3B44 /* Camera.storyboard in Resources */,
 			);
@@ -345,6 +352,7 @@
 				46C9CF3B1EA1CE8A001D3B44 /* EventPostViewController.swift in Sources */,
 				46C9CF3F1EA31DA9001D3B44 /* EventsPostTableViewCell.swift in Sources */,
 				46B0E1591E87342B0015D036 /* GoogleCloudVisionAPI.swift in Sources */,
+				E1D448961EB1250A0025B75E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
