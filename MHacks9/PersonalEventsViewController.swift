@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MapKit
 import SDWebImage
+import MBProgressHUD
 
 struct OrderedDict {
     var arr: [String] = []
@@ -31,7 +32,7 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
         
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
-        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).child("events").queryOrderedByValue().queryLimited(toFirst: 20).observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
             if snapshot.value == nil {
@@ -66,21 +67,20 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                         var idx = 0
                         var count = -1
                         for i in self.events {
-                            if (i["date"] as! String) == "\(month)-\(day)-\(year)" {
+                            if (i["date"] as! String) == "0\(month)-\(day)-\(year)" {
                                 if self.days.dict["Today"] == nil {
                                     self.days.arr.append("Today")
                                     self.days.dict["Today"] = 1
                                     idx = 0
-                                    count += 1
                                     self.days.dictArr.append([idx : i])
                                     print(1)
-                                    print(self.days.dictArr[count])
+                                    //print(self.days.dictArr[count])
                                 }
                                 else {
                                     self.days.dict["Today"] = self.days.dict["Today"]! + 1
-                                    self.days.dictArr[count][idx] = i
+                                    self.days.dictArr[self.days.arr.index(of: "Today")!][self.days.dict["Today"]! - 1] = i
                                     print(2)
-                                    print(self.days.dictArr[count])
+                                    //print(self.days.dictArr[count])
                                 }
                             }
                             else {
@@ -93,18 +93,21 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                                     print(3)
                                     print(self.days.dictArr.count)
                                     print([idx: i])
-                                    print(self.days.dictArr[count])
+                                    //print(self.days.dictArr[count])
                                 }
                                 else {
+                                    print(i["date"] as! String)
                                     self.days.dict[i["date"] as! String]  = self.days.dict[i["date"] as! String]! + 1
-                                    self.days.dictArr[count][idx] = i
+                                    self.days.dictArr[self.days.arr.index(of: i["date"] as! String)!][self.days.dict[i["date"] as! String]! - 1] = i
                                     print(4)
-                                    print(self.days.dictArr[count])
+                                    print(self.days.dictArr[self.days.arr.index(of: i["date"] as! String)!])
+                                    //print(self.days.dictArr[count])
                                 }
                             }
                             idx += 1
                         }
                         self.tableView.reloadData()
+                        MBProgressHUD.hide(for: self.view, animated: true)
                     })
                     
                 }
@@ -171,10 +174,12 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                 cell.sd_setShowActivityIndicatorView(true)
                 cell.sd_setIndicatorStyle(.gray)
                 cell.eventImageView.sd_setImage(with: url)
+                cell.fifth?.isHidden = true
                 cell.fourth?.isHidden = true
             }
             else {
                 cell.photoExists = false
+                cell.fifth?.isHidden = true
                 cell.fourth?.isHidden = true
             }
         }
@@ -187,27 +192,31 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
         tableView.deselectRow(at: indexPath, animated: true)
         if cell.isCollapsed {
             if cell.mapExists {
-                cell.third?.isHidden = false
+                cell.fourth?.isHidden = false
+                cell.fifth?.isHidden = false
             }
             if cell.photoExists {
-                cell.fourth?.isHidden = false
+                cell.third?.isHidden = false
             }
             cell.second?.isHidden = false
             cell.first?.isHidden = true
         }
         else {
             if cell.mapExists {
-                cell.third?.isHidden = true
+                cell.fourth?.isHidden = true
+                cell.fifth?.isHidden = true
             }
             if cell.photoExists {
-                cell.fourth?.isHidden = true
+                cell.third?.isHidden = true
             }
             cell.second?.isHidden = true
             cell.first?.isHidden = false
         }
         cell.isCollapsed = !cell.isCollapsed
+        DispatchQueue.main.async {
         tableView.beginUpdates()
         tableView.endUpdates()
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
