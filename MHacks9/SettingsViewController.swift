@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -114,7 +115,44 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         let newImage = resize(image: editedImage, newSize: size)
         
         backgroundImage = newImage
-        //*****************setBackGroundImage anf fire network request here********************
+        
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            dismiss(animated: true, completion: nil)
+//            return
+//        }
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        DispatchQueue.main.sync {
+//            while managedContext == nil {
+//                
+//            }
+//        }
+//        let entity = NSEntityDescription.entity(forEntityName: "Background", in: managedContext)
+//        
+//        let back = NSManagedObject(entity: entity!, insertInto: managedContext)
+//        let idata = UIImageJPEGRepresentation(newImage, 1)
+//        back.setValue(idata, forKey: "background")
+//        
+//        do {
+//            try managedContext.save()
+//        }
+//        catch let error as Error {
+//            print(error.localizedDescription)
+//        }
+//        //*****************setBackGroundImage anf fire network request here********************
+//        dismiss(animated: true, completion: nil)
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Background")
+//        
+//        do {
+//            let data = try managedContext.fetch(fetchRequest) as? Data
+//            if let data = data {
+//                let backg = UIImage(data: data)
+//                backgroundImageView.image = backg
+//            }
+//        }
+//        catch let error as Error {
+//            print(error.localizedDescription)
+//        }
+//        
         dismiss(animated: true, completion: nil)
     }
     

@@ -599,6 +599,16 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         else {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         }
+        
+        let timer = UserDefaults.standard.double(forKey: "timeBefore")
+        if timer == nil {
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.scheduleNotification(at: eventDate!, title: titleString)
+        }
+        else {
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.scheduleNotification(at: eventDate?.addingTimeInterval(-timer), title: titleString)
+        }
     }
 
     /*

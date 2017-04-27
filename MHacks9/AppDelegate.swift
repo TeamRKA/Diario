@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        application to it. This property is optional since there are legitimate
        error conditions that could cause the creation of the store to fail.
       */
-      let container = NSPersistentContainer(name: "diario")
+      let container = NSPersistentContainer(name: "MHacks9")
       container.loadPersistentStores(completionHandler: { (storeDescription, error) in
           if let error = error as NSError? {
               // Replace this implementation with code to handle the error appropriately.
@@ -145,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let content = UNMutableNotificationContent()
         content.title = title
-        content.body = "Just a reminder that you have \(title) in about an hour"
+        content.body = "Just a reminder that you have \(title) today."
         content.sound = UNNotificationSound.default()
         
         let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
