@@ -854,7 +854,7 @@ diario</string>
                                 <color key="backgroundColor" white="1" alpha="0.35105415239726029" colorSpace="calibratedWhite"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vNe-aq-Fp9">
-                                <rect key="frame" x="4" y="0.0" width="366" height="667"/>
+                                <rect key="frame" x="4" y="64" width="366" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" rowHeight="52" id="MiB-yj-cnq" customClass="DescriptionTableViewCell" customModule="MHacks9" customModuleProvider="target">
@@ -1053,7 +1053,7 @@ diario</string>
                         <constraints>
                             <constraint firstItem="2U2-st-Drs" firstAttribute="top" secondItem="vNe-aq-Fp9" secondAttribute="bottom" id="70i-Ql-LxL"/>
                             <constraint firstItem="vNe-aq-Fp9" firstAttribute="leading" secondItem="9gI-Hz-5fm" secondAttribute="leading" constant="4" id="GYV-ya-9Pa"/>
-                            <constraint firstItem="vNe-aq-Fp9" firstAttribute="top" secondItem="9gI-Hz-5fm" secondAttribute="top" id="Y1D-gW-SU6"/>
+                            <constraint firstItem="vNe-aq-Fp9" firstAttribute="top" secondItem="9gI-Hz-5fm" secondAttribute="top" constant="64" id="Y1D-gW-SU6"/>
                             <constraint firstAttribute="trailing" secondItem="vNe-aq-Fp9" secondAttribute="trailing" constant="5" id="eGe-T7-LqI"/>
                         </constraints>
                     </view>

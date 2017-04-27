@@ -607,7 +607,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
         else {
             let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.scheduleNotification(at: eventDate?.addingTimeInterval(-timer), title: titleString)
+            delegate.scheduleNotification(at: (eventDate?.addingTimeInterval(-timer))!, title: titleString)
         }
     }
 
