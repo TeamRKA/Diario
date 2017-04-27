@@ -47,7 +47,7 @@ class CaptureViewController: UIViewController,  UIImagePickerControllerDelegate,
         GoogleCloudVisionAPI.getText(from: image)
         //let date = parseText.getDate(input: GoogleCloudVisionAPI.recognizedText)
         let date = self.callParseTextLinebyLine(input: GoogleCloudVisionAPI.recognizedText)
-        if ((date) != nil){
+        if ((date) != nil){/Users/Avinash/Desktop/Diario/MHacks9/Base.lproj/Main.storyboard
             self.date = date
           self.performSegue(withIdentifier: "captureSegue", sender: nil)
         }
