@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var timeTextField: UITextField!
     let datePickerView: UIDatePicker = UIDatePicker()
     var backgroundImage: UIImage?
-    
+    var seconds: Double?
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -60,11 +60,15 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
         //var seconds = UIDatePicker.countDownDuration
-        var seconds = sender.countDownDuration
-        print(seconds)
+        seconds = sender.countDownDuration
+        print(seconds!)
+        UserDefaults.standard.set(seconds, forKey: "timeBefore")
+        if(seconds != nil)
+        {
         //dateTextField.text = dateFormatter.string(from: sender.datePicker.countDownDuration)
-        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(seconds))
+        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(seconds!))
         timeTextField.text = "\(h) hrs \(m) mins"
+        }
         
     }
 
@@ -75,13 +79,18 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
         //var seconds = UIDatePicker.countDownDuration
-        var seconds = datePickerView.countDownDuration
-        print(seconds)
+        seconds = datePickerView.countDownDuration
+        print(seconds!)
+        if(seconds != nil)
+        {
+        UserDefaults.standard.set(seconds, forKey: "timeBefore")
         //dateTextField.text = dateFormatter.string(from: sender.datePicker.countDownDuration)
-        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(seconds))
+        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(seconds!))
         timeTextField.text = "\(h) hrs \(m) mins"
+        }
         
     }
+    
     
     @IBAction func changeBackGroundImage(_ sender: Any) {
         
