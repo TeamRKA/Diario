@@ -572,7 +572,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         autoID = dataRef.key
         
-        ref.child("users").child(user!.uid).child("events").child(autoID).setValue(true)
+        ref.child("users").child(user!.uid).child("events").child(autoID).setValue(reverse)
         
         if let image = self.image {
             var data = Data()
