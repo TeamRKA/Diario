@@ -21,6 +21,7 @@ struct OrderedDict {
 class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     var events: [NSDictionary] = []
     
     var days: OrderedDict!

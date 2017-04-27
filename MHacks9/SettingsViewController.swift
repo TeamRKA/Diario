@@ -11,11 +11,14 @@ import UIKit
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var timeTextField: UITextField!
-   let datePickerView: UIDatePicker = UIDatePicker()
+    let datePickerView: UIDatePicker = UIDatePicker()
     var backgroundImage: UIImage?
+    
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //datePickerView.isHidden = false
         // Do any additional setup after loading the view.
     }
 
@@ -24,17 +27,26 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    @IBAction func textFieldEditing(_ sender: UITextField) {
+    @IBAction func textFieldEditingDidBegin(_ sender: UITextField) {
         
         datePickerView.isHidden = false
         datePickerView.datePickerMode = UIDatePickerMode.countDownTimer
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(SettingsViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
-        
+
     }
+    
+//    
+//    @IBAction func textFieldEditing(_ sender: UITextField) {
+//        
+//        datePickerView.isHidden = false
+//        datePickerView.datePickerMode = UIDatePickerMode.countDownTimer
+//        sender.inputView = datePickerView
+//        datePickerView.addTarget(self, action: #selector(SettingsViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+//        
+//        
+//    }
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
@@ -43,6 +55,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
         //datePickerView.isHidden = true
+        //datePickerView.isHidden = false
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
@@ -51,14 +64,22 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         print(seconds)
         //dateTextField.text = dateFormatter.string(from: sender.datePicker.countDownDuration)
         let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(seconds))
-        timeTextField.text = "\(h):\(m)"
+        timeTextField.text = "\(h) hrs \(m) mins"
         
     }
 
     @IBAction func selectTimeOnTap(_ sender: UITapGestureRecognizer) {
         timeTextField.resignFirstResponder()
         datePickerView.isHidden = true
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        //var seconds = UIDatePicker.countDownDuration
+        var seconds = datePickerView.countDownDuration
+        print(seconds)
+        //dateTextField.text = dateFormatter.string(from: sender.datePicker.countDownDuration)
+        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(seconds))
+        timeTextField.text = "\(h) hrs \(m) mins"
         
     }
     
