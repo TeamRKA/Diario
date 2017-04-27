@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import MapKit
+import SDWebImage
 
 struct OrderedDict {
     var arr: [String] = []
@@ -15,7 +17,7 @@ struct OrderedDict {
     var dictArr: [[Int : NSDictionary]] = []
 }
 
-class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var events: [NSDictionary] = []
@@ -108,6 +110,7 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                 }
             }
         }
+        
     }
 
     override func viewDidLoad() {
@@ -115,6 +118,9 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 550
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,21 +137,100 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! RemindersTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! RemindersTableViewCell
         
-        print("\(indexPath.section) \(indexPath.row)")
         let event = days.dictArr[indexPath.section][indexPath.row]
-        print(event)
+        
         if let event = event {
             cell.titleLabel.text = event["title"] as! String
+            cell.locationLabel.text = event["location"] as! String
+            cell.timeLabel.text = event["time"] as! String
+            cell.shortDescriptionLabel.text = event["description"] as! String
+            cell.fullDescriptionLabel.text = event["description"] as! String
+            
+            cell.second?.isHidden = true
+            
+            if let lng = event["longitude"] as? Double {
+                let lat = event["latitude"] as! Double
+                
+                cell.mapView.delegate = self
+                cell.mapView.isUserInteractionEnabled = false
+                DispatchQueue.main.async {
+                    cell = self.goToLocation(location: CLLocation(latitude: lat, longitude: lng), cell: cell)
+                    cell = self.addAnnotation(location: CLLocation(latitude: lat, longitude: lng), cell: cell)
+                }
+                
+                cell.third?.isHidden = true
+            }
+            else {
+                cell.mapExists = false
+                cell.third?.isHidden = true
+            }
+            if let urlString = event["eventPhoto"] as? String {
+                let url = URL(string: urlString)
+                cell.sd_setShowActivityIndicatorView(true)
+                cell.sd_setIndicatorStyle(.gray)
+                cell.eventImageView.sd_setImage(with: url)
+                cell.fourth?.isHidden = true
+            }
+            else {
+                cell.photoExists = false
+                cell.fourth?.isHidden = true
+            }
         }
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! RemindersTableViewCell
+        tableView.deselectRow(at: indexPath, animated: true)
+        if cell.isCollapsed {
+            if cell.mapExists {
+                cell.third?.isHidden = false
+            }
+            if cell.photoExists {
+                cell.fourth?.isHidden = false
+            }
+            cell.second?.isHidden = false
+            cell.first?.isHidden = true
+        }
+        else {
+            if cell.mapExists {
+                cell.third?.isHidden = true
+            }
+            if cell.photoExists {
+                cell.fourth?.isHidden = true
+            }
+            cell.second?.isHidden = true
+            cell.first?.isHidden = false
+        }
+        cell.isCollapsed = !cell.isCollapsed
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return days.arr[section]
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        tableView.headerView(forSection: section)?.textLabel?.text = days.arr[section]
+        tableView.headerView(forSection: section)?.backgroundColor = .clear
         return tableView.headerView(forSection: section)
+    }
+    
+    func goToLocation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegionMake(location.coordinate, span)
+        cell.mapView.setRegion(region, animated: false)
+        return cell
+    }
+    
+    func addAnnotation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        cell.mapView.addAnnotation(annotation)
+        return cell
     }
 
     /*

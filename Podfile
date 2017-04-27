@@ -17,5 +17,10 @@ pod 'MBProgressHUD'
 
 pod 'SwiftyJSON'
 
+pod 'SDWebImage/WebP'
+
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
+
 target 'MHacks9' do
 end

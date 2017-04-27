@@ -226,7 +226,7 @@
 				TargetAttributes = {
 					AE91A3641E862AC600E460D6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = ZN853SAZBE;
+						DevelopmentTeam = 8A4H2873BE;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -467,11 +467,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MHacks9/MHacks9.entitlements;
-				DEVELOPMENT_TEAM = ZN853SAZBE;
+				DEVELOPMENT_TEAM = 8A4H2873BE;
 				INFOPLIST_FILE = MHacks9/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kenan.Diario23;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kenan.Diario2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -483,11 +483,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MHacks9/MHacks9.entitlements;
-				DEVELOPMENT_TEAM = ZN853SAZBE;
+				DEVELOPMENT_TEAM = 8A4H2873BE;
 				INFOPLIST_FILE = MHacks9/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kenan.Diario23;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kenan.Diario2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

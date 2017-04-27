@@ -32,6 +32,11 @@ class RemindersTableViewCell: UITableViewCell {
     var second: UIView?
     var third: UIView?
     var fourth: UIView?
+    
+    var mapExists: Bool = true
+    var photoExists: Bool = true
+    
+    var isCollapsed: Bool = true
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +45,11 @@ class RemindersTableViewCell: UITableViewCell {
         tagView.layer.cornerRadius = tagView.frame.width / 2
         tagView.clipsToBounds = true
  */
+        
+        first = stackView.arrangedSubviews[0]
+        second = stackView.arrangedSubviews[1]
+        third = stackView.arrangedSubviews[2]
+        fourth = stackView.arrangedSubviews[3]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
