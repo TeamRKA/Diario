@@ -19,6 +19,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
     var locations: [NSDictionary]?
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     var nearString = ""
     var searchString = ""
     var titleString = ""
