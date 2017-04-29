@@ -2,7 +2,7 @@
 
 **Diario** is an app that uses OCR to recognize dates and reminds the user using the inputted data.
 
-Time spent: **36** hours spent in total
+Time spent: **50+** hours spent in total
 
 ## Description
 When you're a busy person, you tend to forget all of the dates and times that you see all around you. It's crucial to keep track of each of the events that you're associated with. That's what Diario is for.
@@ -23,6 +23,8 @@ The following **optional** features are implemented:
 - [ ] Support Facebook Events 
 - [ ] Allow user to write notes
 - [X] Personal user accounts
+- [X] Use Foursquare API to search for locations
+- [X] Add MapView for location of the events
 - [ ] Add MapView for events nearby
 
 <!--## Wireframe
@@ -32,6 +34,7 @@ The following **optional** features are implemented:
 ## API
 For this app, we will be using Google Cloud Vision's API (specifically its OCR endpoint) and FireBase for storing our own data.
 For our FireBase API, we will need tables for users and events associated to the users (columns including date, time, title, note/description, and links).
+We also implemented the Foursquare API to search for locations to map the locations to the events.
 
 ## Video Walkthrough 
 
