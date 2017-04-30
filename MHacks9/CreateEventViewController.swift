@@ -150,6 +150,12 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        tableView.headerView(forSection: section)?.contentView.backgroundColor = .clear
+        tableView.headerView(forSection: section)?.backgroundView?.backgroundColor = .clear
+        return tableView.headerView(forSection: section)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section < 6 {
             tableView.deselectRow(at: indexPath, animated: false)

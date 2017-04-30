@@ -696,11 +696,11 @@ diario</string>
                                 <color key="backgroundColor" white="1" alpha="0.34999999999999998" colorSpace="calibratedWhite"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="635" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="yJl-xs-NCR">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="635" id="BAr-et-GxS" customClass="RemindersTableViewCell" customModule="MHacks9" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="635"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="635"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BAr-et-GxS" id="08q-nN-lAo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="634"/>
@@ -778,7 +778,7 @@ diario</string>
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="KV5-71-gag" firstAttribute="top" secondItem="gzV-6W-rh2" secondAttribute="bottom" constant="8" id="00T-hf-atl"/>
                                                         <constraint firstItem="gzV-6W-rh2" firstAttribute="top" secondItem="jxO-T7-uzj" secondAttribute="bottom" constant="8" id="IcQ-uh-NgK"/>
@@ -802,7 +802,7 @@ diario</string>
                                                 <constraint firstItem="Uvs-Xf-Y1q" firstAttribute="top" secondItem="08q-nN-lAo" secondAttribute="top" id="oaF-hE-RI7"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="cellView" destination="Uvs-Xf-Y1q" id="BWf-3C-4EW"/>
                                             <outlet property="eventImageView" destination="tYa-XS-57R" id="sc9-Wp-kez"/>
@@ -823,7 +823,7 @@ diario</string>
                             <constraint firstAttribute="trailing" secondItem="yJl-xs-NCR" secondAttribute="trailing" id="5AE-OB-KNW"/>
                             <constraint firstItem="yJl-xs-NCR" firstAttribute="leading" secondItem="Ijl-qu-PVN" secondAttribute="leading" id="Pza-zZ-KlK"/>
                             <constraint firstItem="yJl-xs-NCR" firstAttribute="top" secondItem="Ijl-qu-PVN" secondAttribute="top" constant="64" id="RoU-m4-gay"/>
-                            <constraint firstItem="Ayj-Gp-KLE" firstAttribute="top" secondItem="yJl-xs-NCR" secondAttribute="bottom" constant="-49" id="tKi-rt-uZ3"/>
+                            <constraint firstItem="Ayj-Gp-KLE" firstAttribute="top" secondItem="yJl-xs-NCR" secondAttribute="bottom" id="tKi-rt-uZ3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="4fT-2i-jsI"/>
@@ -853,7 +853,7 @@ diario</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.35105415239726029" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vNe-aq-Fp9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vNe-aq-Fp9">
                                 <rect key="frame" x="4" y="64" width="366" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -1053,7 +1053,7 @@ diario</string>
                         <constraints>
                             <constraint firstItem="2U2-st-Drs" firstAttribute="top" secondItem="vNe-aq-Fp9" secondAttribute="bottom" id="70i-Ql-LxL"/>
                             <constraint firstItem="vNe-aq-Fp9" firstAttribute="leading" secondItem="9gI-Hz-5fm" secondAttribute="leading" constant="4" id="GYV-ya-9Pa"/>
-                            <constraint firstItem="vNe-aq-Fp9" firstAttribute="top" secondItem="9gI-Hz-5fm" secondAttribute="top" id="Y1D-gW-SU6"/>
+                            <constraint firstItem="vNe-aq-Fp9" firstAttribute="top" secondItem="9gI-Hz-5fm" secondAttribute="top" constant="64" id="Y1D-gW-SU6"/>
                             <constraint firstAttribute="trailing" secondItem="vNe-aq-Fp9" secondAttribute="trailing" constant="5" id="eGe-T7-LqI"/>
                         </constraints>
                     </view>
@@ -1179,6 +1179,7 @@ diario</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="LYn-iF-iVf" kind="relationship" relationship="viewControllers" id="4VY-mk-vsa"/>

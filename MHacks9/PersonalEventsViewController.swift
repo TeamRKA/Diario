@@ -40,6 +40,7 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).child("events").queryOrderedByValue().queryLimited(toFirst: 20).observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
             if snapshot.value == nil {
+                MBProgressHUD.hide(for: self.view, animated: true)
                 return
             }
             else {
@@ -130,6 +131,9 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                         MBProgressHUD.hide(for: self.view, animated: true)
                     })
                     
+                }
+                else {
+                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
             }
         }
