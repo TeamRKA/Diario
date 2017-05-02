@@ -40,7 +40,7 @@ We also implemented the Foursquare API to search for locations to map the locati
 
 Here's a walkthrough of implemented user stories:
 
-![alt text](https://github.com/TeamRKA/Diario/blob/master/diarioDemo.gif)
+![alt text](https://github.com/TeamRKA/Diario/blob/master/DiarioDemo2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
