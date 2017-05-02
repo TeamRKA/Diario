@@ -71,8 +71,6 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                         let day = String(calendar.component(.day, from: current))
                         var idx = 0
                         var count = -1
-                        print("n\\n\n\\n\n\\n\\n\\n\n\\n\n\n\\n\\n\n\\n\nalksdjflkasdlk;fjl\n\n\n\\n\\n\n\\n")
-                        print(self.events.count)
                         for i in self.events {
                             if (i["date"] as! String) == "0\(month)-\(day)-\(year)" {
                                 if self.days.dict["Today"] == nil {
@@ -80,21 +78,10 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                                     self.days.dict["Today"] = 1
                                     idx = 0
                                     self.days.dictArr.append([idx : i])
-                                    print(1)
-                                    print(self.days.dictArr[self.days.arr.index(of: "Today")!])
-                                    print("\n\n\n\n\n\n\\n\n\n\\n\n\n\n\\n\n\n")
-                                    print(self.days.dict["Today"])
-                                    //print(self.days.dictArr[count])
                                 }
                                 else {
                                     self.days.dict["Today"] = self.days.dict["Today"]! + 1
                                     self.days.dictArr[self.days.arr.index(of: "Today")!][self.days.dict["Today"]! - 1] = i
-                                    print(2)
-                                    print(i)
-                                    print(self.days.dictArr[self.days.arr.index(of: "Today")!])
-                                    print("\n\n\n\n\n\n\\n\n\n\\n\n\n\n\\n\n\n")
-                                    print(self.days.dict["Today"])
-                                    //print(self.days.dictArr[count])
                                 }
                             }
                             else {
@@ -104,30 +91,16 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
                                     idx = 0
                                     count += 1
                                     self.days.dictArr.append([idx : i])
-                                    print(3)
-                                    print(self.days.dictArr.count)
-                                    print([idx: i])
-                                    print(self.days.dictArr[self.days.arr.index(of: i["date"] as! String)!])
-                                    print("\n\n\n\n\n\n\\n\n\n\\n\n\n\n\\n\n\n")
-                                    print(self.days.dict[i["date"] as! String])
-                                    //print(self.days.dictArr[count])
                                 }
                                 else {
                                     print(i["date"] as! String)
                                     self.days.dict[i["date"] as! String]  = self.days.dict[i["date"] as! String]! + 1
                                     self.days.dictArr[self.days.arr.index(of: i["date"] as! String)!][self.days.dict[i["date"] as! String]! - 1] = i
-                                    print(4)
-                                    print(self.days.dictArr[self.days.arr.index(of: i["date"] as! String)!])
-                                    print("\n\n\n\n\n\n\\n\n\n\\n\n\n\n\\n\n\n")
-                                    print(self.days.dict[i["date"] as! String])
-                                    //print(self.days.dictArr[count])
                                 }
                             }
                             idx += 1
                         }
                         self.tableView.reloadData()
-                        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-                        print(self.days.dict[self.days.arr[0]])
                         MBProgressHUD.hide(for: self.view, animated: true)
                     })
                     
