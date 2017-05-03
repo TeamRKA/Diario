@@ -225,19 +225,6 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
         return tableView.headerView(forSection: section)
     }
     
-//    func goToLocation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
-//        let span = MKCoordinateSpanMake(0.01, 0.01)
-//        let region = MKCoordinateRegionMake(location.coordinate, span)
-//        cell.mapView.setRegion(region, animated: false)
-//        return cell
-//    }
-//    
-//    func addAnnotation(location: CLLocation, cell: RemindersTableViewCell) -> RemindersTableViewCell {
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = location.coordinate
-//        cell.mapView.addAnnotation(annotation)
-//        return cell
-//    }
 
     /*
     // MARK: - Navigation

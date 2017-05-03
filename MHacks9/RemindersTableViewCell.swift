@@ -10,12 +10,6 @@ import UIKit
 import MapKit
 
 class RemindersTableViewCell: UITableViewCell {
-    /*
-    @IBOutlet weak var tagView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var scheduleView: UIImageView!
- */
     
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -40,14 +34,7 @@ class RemindersTableViewCell: UITableViewCell {
     var isCollapsed: Bool = true
 
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        /*
-        tagView.layer.cornerRadius = tagView.frame.width / 2
-        tagView.clipsToBounds = true
- */
-        
-        
+        super.awakeFromNib()        
         first = stackView.arrangedSubviews[0]
         second = stackView.arrangedSubviews[1]
         third = stackView.arrangedSubviews[2]

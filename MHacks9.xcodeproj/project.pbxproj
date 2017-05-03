@@ -10,7 +10,6 @@
 		10756AA1732A0B874C6BA044 /* Pods_MHacks9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB91911C36694075D3B2804 /* Pods_MHacks9.framework */; };
 		46B0E1591E87342B0015D036 /* GoogleCloudVisionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0E1581E87342B0015D036 /* GoogleCloudVisionAPI.swift */; };
 		46C9CF411EA466FA001D3B44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46C9CF401EA466FA001D3B44 /* GoogleService-Info.plist */; };
-		46C9CF431EA6CC1F001D3B44 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46C9CF421EA6CC1F001D3B44 /* Camera.storyboard */; };
 		46C9CF451EA6DB9D001D3B44 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF441EA6DB9D001D3B44 /* DescriptionTableViewCell.swift */; };
 		46C9CF471EA6DBBA001D3B44 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF461EA6DBBA001D3B44 /* DateTableViewCell.swift */; };
 		46C9CF491EA6DBC7001D3B44 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CF481EA6DBC7001D3B44 /* TimeTableViewCell.swift */; };
@@ -29,7 +28,6 @@
 		AE91A3711E862AC700E460D6 /* MHacks9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE91A36F1E862AC700E460D6 /* MHacks9.xcdatamodeld */; };
 		AE91A3731E862AC700E460D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE91A3721E862AC700E460D6 /* Assets.xcassets */; };
 		AE91A3761E862AC700E460D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE91A3741E862AC700E460D6 /* LaunchScreen.storyboard */; };
-		E1D448941EB0051C0025B75E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D448931EB0051C0025B75E /* Settings.storyboard */; };
 		E1D448961EB1250A0025B75E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D448951EB1250A0025B75E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +35,6 @@
 		4053FA264F1C2F3D59323A3C /* Pods-MHacks9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHacks9.release.xcconfig"; path = "Pods/Target Support Files/Pods-MHacks9/Pods-MHacks9.release.xcconfig"; sourceTree = "<group>"; };
 		46B0E1581E87342B0015D036 /* GoogleCloudVisionAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleCloudVisionAPI.swift; sourceTree = "<group>"; };
 		46C9CF401EA466FA001D3B44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		46C9CF421EA6CC1F001D3B44 /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		46C9CF441EA6DB9D001D3B44 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		46C9CF461EA6DBBA001D3B44 /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		46C9CF481EA6DBC7001D3B44 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -61,7 +58,6 @@
 		AE91A3721E862AC700E460D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE91A3751E862AC700E460D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE91A3771E862AC700E460D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1D448931EB0051C0025B75E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E1D448951EB1250A0025B75E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,8 +161,6 @@
 				6E482F011E86EC8B000A6836 /* Model */,
 				AE91A3681E862AC700E460D6 /* AppDelegate.swift */,
 				AE91A36C1E862AC700E460D6 /* Main.storyboard */,
-				46C9CF421EA6CC1F001D3B44 /* Camera.storyboard */,
-				E1D448931EB0051C0025B75E /* Settings.storyboard */,
 				AE91A3721E862AC700E460D6 /* Assets.xcassets */,
 				AE91A3741E862AC700E460D6 /* LaunchScreen.storyboard */,
 				AE91A3771E862AC700E460D6 /* Info.plist */,
@@ -250,9 +244,7 @@
 				AE91A3761E862AC700E460D6 /* LaunchScreen.storyboard in Resources */,
 				46C9CF411EA466FA001D3B44 /* GoogleService-Info.plist in Resources */,
 				AE91A3731E862AC700E460D6 /* Assets.xcassets in Resources */,
-				E1D448941EB0051C0025B75E /* Settings.storyboard in Resources */,
 				AE91A36E1E862AC700E460D6 /* Main.storyboard in Resources */,
-				46C9CF431EA6CC1F001D3B44 /* Camera.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
