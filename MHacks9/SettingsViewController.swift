@@ -21,6 +21,11 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidLoad()
         //datePickerView.isHidden = false
         // Do any additional setup after loading the view.
+        
+        let transparentPixel = UIImage(named: "clear")
+        self.tabBarController?.tabBar.backgroundImage = transparentPixel
+        self.tabBarController?.tabBar.shadowImage = transparentPixel
+        self.tabBarController?.tabBar.isTranslucent = true
     }
 
     override func didReceiveMemoryWarning() {

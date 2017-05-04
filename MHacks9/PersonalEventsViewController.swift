@@ -115,6 +115,11 @@ class PersonalEventsViewController: UIViewController, UITableViewDelegate, UITab
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let transparentPixel = UIImage(named: "clear")
+        self.tabBarController?.tabBar.backgroundImage = transparentPixel
+        self.tabBarController?.tabBar.shadowImage = transparentPixel
+        self.tabBarController?.tabBar.isTranslucent = true
 
         tableView.delegate = self
         tableView.dataSource = self
