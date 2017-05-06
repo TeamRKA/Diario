@@ -71,7 +71,7 @@ class GoogleCloudVisionAPI: NSObject {
         let task: URLSessionDataTask = session.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "")
-                return
+//                return
             }
             
             let json = JSON(data)
