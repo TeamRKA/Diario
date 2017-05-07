@@ -566,9 +566,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss ZZZ"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        let eventDate = dateFormatter.date(from: date + " " + time + ":00 UTC")
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone.local
+        let eventDate = dateFormatter.date(from: date + " " + time + ":00")
         
         timestamp = eventDate?.timeIntervalSince1970
         reverse = timestamp! * -1.0
